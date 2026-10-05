@@ -1,827 +1,559 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapeando Caminhos | Orientação Profissional & Uninta Umirim</title>
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Chart.js for interactive results graph -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- Canvas-Confetti for visual celebration -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f3ff',
-                            100: '#e0e7ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
-                        }
-                    }
-                }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapeando Caminhos | Orientação Profissional</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              wine: '#800020',
+              red: '#C0392B',
+              darkred: '#900C3F',
+              yellow: '#F1C40F',
+              amber: '#D35400',
+              orange: '#E67E22',
+              bg: '#FFF9F9'
             }
+          }
         }
-    </script>
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
-            min-height: 100vh;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-        }
-
-        .btn-option {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-option:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-option:active {
-            transform: translateY(0);
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.35s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media print {
-            .no-print { display: none !important; }
-            body { background: white !important; }
-            .glass-card { box-shadow: none !important; border: 1px solid #ccc !important; }
-        }
-    </style>
+      }
+    }
+  </script>
 </head>
-<body class="text-slate-800 antialiased selection:bg-brand-500 selection:text-white flex flex-col min-h-screen">
+<body class="bg-brand-bg text-gray-800 font-sans min-h-screen pb-12">
 
-    <header class="no-print bg-white/80 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center gap-3 cursor-pointer" id="btn-logo-home">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-md shadow-indigo-200">
-                    <i class="fa-solid fa-compass text-lg"></i>
-                </div>
-                <div>
-                    <h1 class="font-extrabold text-slate-900 leading-tight text-lg">Mapeando Caminhos</h1>
-                    <p class="text-xs text-slate-500 font-medium">Orientação Vocacional • 3º Ano EM</p>
-                </div>
-            </div>
-            <div id="header-actions" class="hidden">
-                <button id="btn-header-reset" class="text-xs font-semibold text-slate-500 hover:text-rose-600 px-3 py-1.5 rounded-lg border border-slate-200 hover:border-rose-200 transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-rotate-left"></i> Reiniciar Teste
-                </button>
-            </div>
+  <!-- TOP HEADER -->
+  <header class="bg-brand-wine text-white shadow-lg border-b-4 border-brand-yellow">
+    <div class="max-w-4xl mx-auto px-4 py-6 text-center">
+      <div class="inline-flex items-center justify-center p-3 bg-white/10 rounded-full mb-3">
+        <i class="fa-solid fa-compass text-brand-yellow text-3xl"></i>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Mapeando Caminhos 🧭</h1>
+      <p class="text-amber-100 text-sm md:text-base mt-2 max-w-xl mx-auto">
+        Orientação Profissional & Vocacional para o 3º Ano do Ensino Médio
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 mt-8">
+
+    <!-- TELA INICIAL -->
+    <section id="screen-start" class="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-red-100">
+      <div class="text-center mb-6">
+        <span class="inline-block px-3 py-1 bg-red-100 text-brand-wine font-semibold text-xs rounded-full uppercase tracking-wider mb-2">
+          Passo 1 de 2
+        </span>
+        <h2 class="text-2xl font-bold text-brand-wine">Bem-vindo(a) à sua Jornada!</h2>
+        <p class="text-gray-600 text-sm mt-1">Este questionário foi criado para te ajudar a refletir sobre seus gostos, habilidades e futuros caminhos sem qualquer pressão.</p>
+      </div>
+
+      <div class="bg-amber-50 border-l-4 border-brand-yellow p-4 rounded-r-lg mb-6">
+        <div class="flex items-start">
+          <i class="fa-solid fa-lightbulb text-brand-amber text-xl mr-3 mt-0.5"></i>
+          <div>
+            <h3 class="font-bold text-gray-800 text-sm">Dica importante antes de começar:</h3>
+            <p class="text-xs text-gray-700 mt-1">
+              Não existem respostas certas ou erradas! Escolha a opção que realmente reflete quem você é hoje, e não o que os outros esperam de você. Você pode mudar de ideia no futuro, e tudo bem!
+            </p>
+          </div>
         </div>
-    </header>
+      </div>
 
-    <!-- MAIN APP CONTAINER -->
-    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-6 md:py-10">
-
-        <section id="screen-welcome" class="animate-fade-in space-y-8">
-            <div class="glass-card rounded-3xl p-6 md:p-10 text-center relative overflow-hidden border border-indigo-100">
-                <div class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-100/60 rounded-full blur-2xl pointer-events-none"></div>
-                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-100/60 rounded-full blur-2xl pointer-events-none"></div>
-
-                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700 mb-4">
-                    <i class="fa-solid fa-graduation-cap"></i> Projeto de Vida e Escolha Profissional
-                </span>
-
-                <h2 class="text-2xl md:text-4xl font-black text-slate-900 tracking-tight leading-snug">
-                    Dúvidas sobre qual caminho seguir pós-Ensino Médio? <br class="hidden md:inline">
-                    <span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Descubra suas reais afinidades!</span>
-                </h2>
-
-                <p class="mt-4 text-slate-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-                    Este questionário baseado em orientação vocacional te ajuda a mapear seus interesses principais entre 5 grandes eixos profissionais, sem pressão e com foco em oportunidades reais e acessíveis.
-                </p>
-
-                <!-- Student Name Input -->
-                <div class="mt-8 max-w-md mx-auto text-left space-y-2">
-                    <label for="student-name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
-                        Qual é o seu nome?
-                    </label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-                        <input type="text" id="student-name" placeholder="Digite seu nome para personalizar o resultado..." 
-                            class="w-full pl-10 pr-4 py-3 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition text-slate-800 text-sm font-medium shadow-sm">
-                    </div>
-                </div>
-
-                <!-- Guidance Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 text-left">
-                    <div class="p-4 bg-slate-50/80 rounded-2xl border border-slate-200/80">
-                        <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm mb-2">
-                            1
-                        </div>
-                        <h4 class="font-bold text-slate-900 text-sm">Sem Resposta "Certa"</h4>
-                        <p class="text-xs text-slate-500 mt-1">Responda com honestidade. Não pense no que sua família ou amigos esperam, mas sim no que você realmente gosta.</p>
-                    </div>
-
-                    <div class="p-4 bg-slate-50/80 rounded-2xl border border-slate-200/80">
-                        <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-sm mb-2">
-                            2
-                        </div>
-                        <h4 class="font-bold text-slate-900 text-sm">45 Perguntas Dinâmicas</h4>
-                        <p class="text-xs text-slate-500 mt-1">Questionário prático, dividido por cartões interativos para resposta rápida em poucos minutos.</p>
-                    </div>
-
-                    <div class="p-4 bg-slate-50/80 rounded-2xl border border-slate-200/80">
-                        <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-sm mb-2">
-                            3
-                        </div>
-                        <h4 class="font-bold text-slate-900 text-sm">Resultado & Oportunidades</h4>
-                        <p class="text-xs text-slate-500 mt-1">Veja seu perfil combinado, gráfico visual e informações sobre ingresso em faculdades e bolsas (FIES).</p>
-                    </div>
-                </div>
-
-                <!-- CTA Button -->
-                <div class="mt-8">
-                    <button id="btn-start-test" class="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold rounded-2xl shadow-lg shadow-indigo-200 hover:shadow-xl transition transform hover:-translate-y-0.5 active:translate-y-0 text-base inline-flex items-center justify-center gap-3">
-                        <span>Iniciar Questionário Interativo</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section id="screen-quiz" class="hidden animate-fade-in space-y-6">
-            
-            <!-- Progress Topbar -->
-            <div class="glass-card rounded-2xl p-4 md:p-6 shadow-sm">
-                <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
-                    <span id="quiz-category-badge" class="px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-700 uppercase tracking-wider">
-                        Eixo 1: Humanas e Sociais
-                    </span>
-                    <span id="quiz-progress-text">Pergunta 1 de 45</span>
-                </div>
-                <!-- Progress Bar -->
-                <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                    <div id="quiz-progress-bar" class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-300 w-0"></div>
-                </div>
-            </div>
-
-            <!-- Question Card -->
-            <div class="glass-card rounded-3xl p-6 md:p-10 shadow-lg relative min-h-[320px] flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider mb-3">
-                        <i class="fa-solid fa-circle-dot"></i>
-                        <span>Sua Afinidade</span>
-                    </div>
-
-                    <h3 id="question-text" class="text-xl md:text-2xl font-bold text-slate-900 leading-snug md:leading-normal">
-                        Carregando pergunta...
-                    </h3>
-                    <p class="text-xs text-slate-500 mt-2">Escolha a opção que melhor reflete seu gosto ou interesse:</p>
-                </div>
-
-                <!-- Answer Buttons -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 my-8">
-                    <button id="btn-opt-1" class="btn-option p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-rose-400 hover:bg-rose-50/50 text-left flex items-center gap-3.5 group">
-                        <div class="w-10 h-10 rounded-xl bg-slate-100 group-hover:bg-rose-100 text-slate-600 group-hover:text-rose-600 flex items-center justify-center font-bold text-lg transition">
-                            🙁
-                        </div>
-                        <div>
-                            <div class="font-bold text-sm text-slate-800">Não combina comigo</div>
-                            <div class="text-xs text-slate-500">Não gosto / Nada a ver</div>
-                        </div>
-                    </button>
-
-                    <button id="btn-opt-2" class="btn-option p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-amber-400 hover:bg-amber-50/50 text-left flex items-center gap-3.5 group">
-                        <div class="w-10 h-10 rounded-xl bg-slate-100 group-hover:bg-amber-100 text-slate-600 group-hover:text-amber-600 flex items-center justify-center font-bold text-lg transition">
-                            🤔
-                        </div>
-                        <div>
-                            <div class="font-bold text-sm text-slate-800">Combina um pouco</div>
-                            <div class="text-xs text-slate-500">Às vezes / Talvez</div>
-                        </div>
-                    </button>
-
-                    <button id="btn-opt-3" class="btn-option p-4 rounded-2xl border-2 border-slate-200 bg-white hover:border-emerald-400 hover:bg-emerald-50/50 text-left flex items-center gap-3.5 group">
-                        <div class="w-10 h-10 rounded-xl bg-slate-100 group-hover:bg-emerald-100 text-slate-600 group-hover:text-emerald-600 flex items-center justify-center font-bold text-lg transition">
-                            😍
-                        </div>
-                        <div>
-                            <div class="font-bold text-sm text-slate-800">Combina muito comigo</div>
-                            <div class="text-xs text-slate-500">Adoro / Tem tudo a ver!</div>
-                        </div>
-                    </button>
-                </div>
-
-                <!-- Quiz Bottom Navigation -->
-                <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-                    <button id="btn-prev-question" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition disabled:opacity-30 disabled:pointer-events-none flex items-center gap-2">
-                        <i class="fa-solid fa-arrow-left"></i> Voltar Anterior
-                    </button>
-                    <span class="text-xs font-semibold text-slate-400" id="question-indicator">1 / 45</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="screen-results" class="hidden animate-fade-in space-y-8">
-            
-            <!-- Result Header Banner -->
-            <div class="glass-card rounded-3xl p-6 md:p-8 bg-gradient-to-r from-slate-900 via-indigo-950 to-purple-950 text-white relative overflow-hidden shadow-xl">
-                <div class="relative z-10">
-                    <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 mb-3">
-                        ✨ Mapeamento Vocacional Concluído
-                    </span>
-                    <h2 class="text-2xl md:text-3xl font-black">
-                        Seu Resultado, <span id="res-student-name" class="text-indigo-300">Estudante</span>!
-                    </h2>
-                    <p class="text-slate-300 text-sm md:text-base mt-2 max-w-2xl leading-relaxed">
-                        Analisamos suas escolhas nas 45 perguntas. Confira abaixo suas áreas predominantes, a intersecção de perfil e os caminhos práticos para ingressar no ensino superior.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Combined Profile Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Primary Area Card -->
-                <div class="glass-card rounded-3xl p-6 border-l-8 border-indigo-600 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-3 py-1 bg-indigo-100 text-indigo-800 text-xs font-black rounded-full uppercase tracking-wider">
-                                🥇 Área Principal (1º Lugar)
-                            </span>
-                            <span id="res-score-1" class="text-sm font-extrabold text-indigo-600">27 pts</span>
-                        </div>
-                        <h3 id="res-title-1" class="text-xl font-bold text-slate-900">Área Principal</h3>
-                        <p id="res-desc-1" class="text-xs text-slate-600 mt-2 leading-relaxed">
-                            Carregando dados...
-                        </p>
-                    </div>
-                    <div class="mt-4 pt-4 border-t border-slate-100">
-                        <span class="text-xs font-bold text-slate-700 uppercase block mb-1.5">Profissões Relacionadas:</span>
-                        <div id="res-careers-1" class="flex flex-wrap gap-1.5"></div>
-                    </div>
-                </div>
-
-                <!-- Secondary Area Card -->
-                <div class="glass-card rounded-3xl p-6 border-l-8 border-purple-500 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs font-black rounded-full uppercase tracking-wider">
-                                🥈 Área Secundária (2º Lugar)
-                            </span>
-                            <span id="res-score-2" class="text-sm font-extrabold text-purple-600">22 pts</span>
-                        </div>
-                        <h3 id="res-title-2" class="text-xl font-bold text-slate-900">Área Secundária</h3>
-                        <p id="res-desc-2" class="text-xs text-slate-600 mt-2 leading-relaxed">
-                            Carregando dados...
-                        </p>
-                    </div>
-                    <div class="mt-4 pt-4 border-t border-slate-100">
-                        <span class="text-xs font-bold text-slate-700 uppercase block mb-1.5">Profissões Relacionadas:</span>
-                        <div id="res-careers-2" class="flex flex-wrap gap-1.5"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Synthesis & Combined Profile Highlight -->
-            <div class="glass-card rounded-3xl p-6 bg-gradient-to-br from-indigo-50/80 to-purple-50/80 border border-indigo-200/60">
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center text-xl shrink-0 shadow-md">
-                        <i class="fa-solid fa-puzzle-piece"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-extrabold text-slate-900 text-base md:text-lg">Como Funciona Seu Perfil Combinado</h4>
-                        <p id="res-synthesis" class="text-xs md:text-sm text-slate-700 mt-1 leading-relaxed">
-                            A união das suas duas pontuações mais altas revela áreas em que você pode se destacar unindo competências complementares!
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Chart Section -->
-            <div class="glass-card rounded-3xl p-6 md:p-8">
-                <h4 class="font-bold text-slate-900 text-base mb-1">Seu Gráfico Geral nas 5 Áreas</h4>
-                <p class="text-xs text-slate-500 mb-6">A pontuação máxima em cada eixo é 27 pontos (9 perguntas × 3 pontos).</p>
-                <div class="w-full max-w-xl mx-auto h-[280px] md:h-[320px]">
-                    <canvas id="resultsChart"></canvas>
-                </div>
-            </div>
-
-            <!-- UNINTA UMIRIM & FIES SPECIAL SECTION -->
-            <div class="glass-card rounded-3xl p-6 md:p-8 border-2 border-indigo-200 bg-gradient-to-b from-white to-indigo-50/40 space-y-6">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-indigo-100 pb-4">
-                    <div>
-                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-600 text-white inline-block mb-2 shadow-sm">
-                            🎓 Oportunidade Regional de Ensino Superior
-                        </span>
-                        <h3 class="text-2xl font-extrabold text-slate-900">Uninta Umirim & Financiamento Pelo FIES</h3>
-                        <p class="text-xs text-slate-600 mt-1">Conheça opções acessíveis para iniciar sua faculdade sem complicação.</p>
-                    </div>
-                    <a href="https://uninta.edu.br/site/umirim/" target="_blank" rel="noopener noreferrer" class="self-start md:self-auto px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition inline-flex items-center gap-2 shadow-sm">
-                        <span>Acessar Site Oficial</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-                </div>
-
-                <!-- New Courses Highlight -->
-                <div>
-                    <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-2">
-                        <i class="fa-solid fa-sparkles text-amber-500"></i>
-                        Novos Cursos Anunciados para Breve:
-                    </h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <div class="p-4 bg-white rounded-2xl border border-indigo-100 shadow-sm flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
-                                <i class="fa-solid fa-brain"></i>
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-slate-900 text-sm">Psicologia</h5>
-                                <p class="text-[11px] text-slate-500">Área de Humanas e Saúde</p>
-                            </div>
-                        </div>
-
-                        <div class="p-4 bg-white rounded-2xl border border-indigo-100 shadow-sm flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                                <i class="fa-solid fa-user-nurse"></i>
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-slate-900 text-sm">Enfermagem</h5>
-                                <p class="text-[11px] text-slate-500">Área de Saúde e Cuidado</p>
-                            </div>
-                        </div>
-
-                        <div class="p-4 bg-white rounded-2xl border border-indigo-100 shadow-sm flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
-                                <i class="fa-solid fa-scale-balanced"></i>
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-slate-900 text-sm">Direito</h5>
-                                <p class="text-[11px] text-slate-500">Área de Humanas e Justiça</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Established Course Note (Medicina Veterinária) -->
-                    <div class="mt-3 p-3 bg-slate-50 rounded-xl border border-slate-200/80 flex items-center justify-between text-xs text-slate-600">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-paw text-amber-600"></i>
-                            <span>A instituição também conta com o curso de <strong>Medicina Veterinária</strong> já em pleno funcionamento no campus.</span>
-                        </div>
-                        <span class="hidden sm:inline-block px-2 py-0.5 bg-slate-200 text-slate-700 text-[10px] font-semibold rounded">Curso Ativo</span>
-                    </div>
-                </div>
-
-                <!-- FIES & Facilitated Admission -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                    <div class="p-4 bg-white rounded-2xl border border-slate-200">
-                        <h5 class="font-bold text-slate-900 text-sm mb-1.5 flex items-center gap-2 text-indigo-700">
-                            <i class="fa-solid fa-hand-holding-dollar"></i> Como funciona o FIES no campus
-                        </h5>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            O <strong>FIES (Fundo de Financiamento Estudantil)</strong> permite que o estudante financie a faculdade privada com juros zero ou taxas facilitadas, pagando o valor principal só depois de se formar. A Uninta aceita o FIES e oferece suporte no processo de inscrição com a nota do ENEM.
-                        </p>
-                    </div>
-
-                    <div class="p-4 bg-white rounded-2xl border border-slate-200">
-                        <h5 class="font-bold text-slate-900 text-sm mb-1.5 flex items-center gap-2 text-purple-700">
-                            <i class="fa-solid fa-id-card"></i> Processo Seletivo Facilitado
-                        </h5>
-                        <p class="text-xs text-slate-600 leading-relaxed">
-                            Você pode ingressar através da <strong>nota do ENEM</strong>, realizando o <strong>Vestibular Agendado / Simplificado</strong> ou participando dos processos seletivos contínuos divulgados diretamente no portal oficial do campus Umirim.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- General Public School Guidance -->
-            <div class="glass-card rounded-3xl p-6 md:p-8 space-y-4">
-                <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                    <i class="fa-solid fa-route text-emerald-600"></i>
-                    Outros Caminhos para o Ensino Superior e Técnico
-                </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                    <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
-                        <strong class="block text-slate-800 mb-1">Sisu & Cotas Públicas</strong>
-                        <span class="text-slate-600">Vagas em universidades públicas pelo ENEM com reserva de cotas para estudantes de escolas públicas.</span>
-                    </div>
-                    <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
-                        <strong class="block text-slate-800 mb-1">ProUni (Bolsas 100%)</strong>
-                        <span class="text-slate-600">Bolsas integrais e parciais em faculdades particulares com base no desempenho no ENEM.</span>
-                    </div>
-                    <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
-                        <strong class="block text-slate-800 mb-1">Cursos Técnicos & IFs</strong>
-                        <span class="text-slate-600">Formações práticas rápidas e gratuitas em Institutos Federais e escolas profissionalizantes estaduais.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Action Plan -->
-            <div class="glass-card rounded-3xl p-6 border border-emerald-200 bg-emerald-50/30">
-                <h4 class="font-bold text-slate-900 text-base mb-2 flex items-center gap-2">
-                    <i class="fa-solid fa-list-check text-emerald-600"></i>
-                    Seu Plano de Ação para os Próximos 7 Dias
-                </h4>
-                <div class="space-y-2 text-xs font-medium text-slate-700">
-                    <label class="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 cursor-pointer">
-                        <input type="checkbox" class="w-4 h-4 text-emerald-600 rounded border-slate-300">
-                        <span>Pesquisar a grade curricular das profissões destacadas nas suas Áreas Principal e Secundária.</span>
-                    </label>
-                    <label class="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 cursor-pointer">
-                        <input type="checkbox" class="w-4 h-4 text-emerald-600 rounded border-slate-300">
-                        <span>Acessar o portal da Uninta Umirim (uninta.edu.br/site/umirim) para conferir edital e formas de ingresso.</span>
-                    </label>
-                    <label class="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 cursor-pointer">
-                        <input type="checkbox" class="w-4 h-4 text-emerald-600 rounded border-slate-300">
-                        <span>Checar os requisitos de renda e nota do ENEM necessários para solicitar o FIES ou ProUni.</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="no-print flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <button id="btn-print-results" class="w-full sm:w-auto px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition flex items-center justify-center gap-2 text-sm shadow-md">
-                    <i class="fa-solid fa-print"></i> Imprimir / Salvar em PDF
-                </button>
-                <button id="btn-retake-quiz" class="w-full sm:w-auto px-6 py-3.5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold rounded-2xl transition flex items-center justify-center gap-2 text-sm">
-                    <i class="fa-solid fa-rotate-left"></i> Refazer o Teste
-                </button>
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="no-print border-t border-slate-200/80 bg-white/60 backdrop-blur-sm py-6 mt-12 text-center text-xs text-slate-500">
-        <div class="max-w-4xl mx-auto px-4">
-            <p>Desenvolvido para apoio à Orientação Vocacional e Profissional de estudantes do Ensino Médio.</p>
+      <div class="space-y-4 mb-8 text-sm text-gray-700">
+        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+          <i class="fa-solid fa-list-check text-brand-red mr-3 text-lg"></i>
+          <span>São <strong>45 perguntas rápidas</strong> sobre situações do dia a dia.</span>
         </div>
-    </footer>
+        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+          <i class="fa-solid fa-clock text-brand-red mr-3 text-lg"></i>
+          <span>Leva cerca de <strong>10 a 15 minutos</strong> para responder tudo.</span>
+        </div>
+        <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+          <i class="fa-solid fa-chart-pie text-brand-red mr-3 text-lg"></i>
+          <span>No final você verá seu <strong>Perfil Combinado</strong> e áreas de maior afinidade.</span>
+        </div>
+      </div>
 
-    <script>
-        // --- DATA STRUCTURE: 45 QUESTIONS IN 5 AXES ---
-        const questionsData = [
-            // Eixo 1: Humanas e Sociais
-            { id: 1, axis: 'H', category: 'Humanas e Sociais', text: 'Escutar amigos quando estão passando por momentos difíceis e colaborar na busca por soluções.' },
-            { id: 2, axis: 'H', category: 'Humanas e Sociais', text: 'Entender o funcionamento da sociedade estudando História, Filosofia, Sociologia ou atualidades.' },
-            { id: 3, axis: 'H', category: 'Humanas e Sociais', text: 'Defender os direitos humanos e combater situações de injustiça social.' },
-            { id: 4, axis: 'H', category: 'Humanas e Sociais', text: 'Ensinar, explicar conceitos ou orientar pessoas no processo de aprendizagem.' },
-            { id: 5, axis: 'H', category: 'Humanas e Sociais', text: 'Pesquisar sobre comportamento humano, sentimentos e relações interpessoais.' },
-            { id: 6, axis: 'H', category: 'Humanas e Sociais', text: 'Participar de trabalhos voluntários, ONGs ou ações de impacto comunitário.' },
-            { id: 7, axis: 'H', category: 'Humanas e Sociais', text: 'Lidar com atendimento ao público de forma direta, contínua e empática.' },
-            { id: 8, axis: 'H', category: 'Humanas e Sociais', text: 'Compreender o impacto das escolhas políticas e econômicas na vida da população.' },
-            { id: 9, axis: 'H', category: 'Humanas e Sociais', text: 'Mediar conflitos e buscar acordos pacíficos entre partes divergentes.' },
+      <button id="btn-start" class="w-full bg-brand-red hover:bg-brand-darkred text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition duration-200 flex items-center justify-center text-base">
+        <span>Começar o Questionário</span>
+        <i class="fa-solid fa-arrow-right ml-2"></i>
+      </button>
+    </section>
 
-            // Eixo 2: Exatas e Tecnologia
-            { id: 10, axis: 'T', category: 'Exatas e Tecnologia', text: 'Resolver desafios que exigem raciocínio lógico, enigmas ou jogos de estratégia.' },
-            { id: 11, axis: 'T', category: 'Exatas e Tecnologia', text: 'Trabalhar com Matemática, Física ou aplicação de fórmulas e contas.' },
-            { id: 12, axis: 'T', category: 'Exatas e Tecnologia', text: 'Entender o funcionamento interno de computadores, softwares, redes ou aplicativos.' },
-            { id: 13, axis: 'T', category: 'Exatas e Tecnologia', text: 'Organizar dados e informações em planilhas, tabelas e gráficos estatísticos.' },
-            { id: 14, axis: 'T', category: 'Exatas e Tecnologia', text: 'Compreender o funcionamento de engrenagens, circuitos elétricos, máquinas ou construções.' },
-            { id: 15, axis: 'T', category: 'Exatas e Tecnologia', text: 'Aprender linguagens de programação ou buscar a automação de tarefas.' },
-            { id: 16, axis: 'T', category: 'Exatas e Tecnologia', text: 'Analisar orçamentos, dados financeiros e investimentos.' },
-            { id: 17, axis: 'T', category: 'Exatas e Tecnologia', text: 'Identificar falhas em processos ou sistemas técnicos e propor soluções estruturadas.' },
-            { id: 18, axis: 'T', category: 'Exatas e Tecnologia', text: 'Realizar cálculos precisos para projetos, medições ou estimativas técnicas.' },
+    <!-- TELA DO QUESTIONÁRIO -->
+    <section id="screen-quiz" class="hidden bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-red-100">
+      
+      <!-- BARRA DE PROGRESSO -->
+      <div class="mb-6">
+        <div class="flex justify-between items-center text-xs font-bold text-gray-500 mb-2">
+          <span id="quiz-progress-text">Pergunta 1 de 45</span>
+          <span id="quiz-progress-percent" class="text-brand-red">0%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+          <div id="quiz-progress-bar" class="bg-brand-red h-3 rounded-full transition-all duration-300" style="width: 2%;"></div>
+        </div>
+      </div>
 
-            // Eixo 3: Biológicas e Saúde
-            { id: 19, axis: 'S', category: 'Biológicas e Saúde', text: 'Estudar o corpo humano, o funcionamento dos órgãos, a prevenção e o tratamento de doenças.' },
-            { id: 20, axis: 'S', category: 'Biológicas e Saúde', text: 'Prestar assistência direta ao bem-estar físico e à saúde de pessoas fragilizadas.' },
-            { id: 21, axis: 'S', category: 'Biológicas e Saúde', text: 'Realizar atividades ao ar livre, em contato direto com a natureza, solos ou ecossistemas.' },
-            { id: 22, axis: 'S', category: 'Biológicas e Saúde', text: 'Cuidar do bem-estar, saúde e comportamento dos animais.' },
-            { id: 23, axis: 'S', category: 'Biológicas e Saúde', text: 'Ter interesse por Biologia, Genética, Química orgânica ou ecologia.' },
-            { id: 24, axis: 'S', category: 'Biológicas e Saúde', text: 'Conduzir procedimentos práticos ou exames em laboratórios usando equipamentos específicos.' },
-            { id: 25, axis: 'S', category: 'Biológicas e Saúde', text: 'Atuar em causas voltadas à sustentabilidade, reciclagem e preservação ambiental.' },
-            { id: 26, axis: 'S', category: 'Biológicas e Saúde', text: 'Compreender os efeitos dos alimentos e do estilo de vida no organismo.' },
-            { id: 27, axis: 'S', category: 'Biológicas e Saúde', text: 'Investigar epidemias, pragas ou fatores ambientais que afetam a saúde coletiva.' },
+      <!-- CARTÃO DA PERGUNTA -->
+      <div class="my-6 min-h-[160px] flex flex-col justify-center">
+        <span id="question-axis-badge" class="inline-block self-start px-3 py-1 bg-amber-100 text-brand-amber font-semibold text-xs rounded-full mb-3">
+          Carregando...
+        </span>
+        <h2 id="question-text" class="text-lg md:text-xl font-bold text-gray-800 leading-snug">
+          Texto da pergunta aqui...
+        </h2>
+      </div>
 
-            // Eixo 4: Artes e Comunicação
-            { id: 28, axis: 'C', category: 'Artes e Comunicação', text: 'Produzir ilustrações, pinturas ou criações visuais no papel ou em meios digitais.' },
-            { id: 29, axis: 'C', category: 'Artes e Comunicação', text: 'Escrever textos, redações, histórias, poesias ou roteiros.' },
-            { id: 30, axis: 'C', category: 'Artes e Comunicação', text: 'Gravar e editar vídeos, fotos ou conteúdos direcionados a mídias digitais.' },
-            { id: 31, axis: 'C', category: 'Artes e Comunicação', text: 'Expressar ideias por meio de música, teatro, dança ou outras linguagens artísticas.' },
-            { id: 32, axis: 'C', category: 'Artes e Comunicação', text: 'Elaborar projetos de arquitetura, decoração de interiores ou design de produtos.' },
-            { id: 33, axis: 'C', category: 'Artes e Comunicação', text: 'Desenvolver campanhas publicitárias, identidade visual de marcas ou estratégias de divulgação.' },
-            { id: 34, axis: 'C', category: 'Artes e Comunicação', text: 'Acompanhar notícias, conduzir entrevistas ou apurar fatos para informar o público.' },
-            { id: 35, axis: 'C', category: 'Artes e Comunicação', text: 'Criar arranjos estéticos e funcionais para eventos, ambientes ou mídias impressas.' },
-            { id: 36, axis: 'C', category: 'Artes e Comunicação', text: 'Usar a imaginação para transformar conceitos abstratos em produtos visuais ou narrativos.' },
+      <!-- OPÇÕES DE RESPOSTA -->
+      <div class="space-y-3 mb-8">
+        <button onclick="handleAnswer(3)" class="w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-brand-red hover:bg-red-50 transition duration-150 flex items-center justify-between group">
+          <span class="font-semibold text-gray-700 group-hover:text-brand-wine text-sm md:text-base">😍 Combina MUITO comigo / Adoro</span>
+          <i class="fa-solid fa-chevron-right text-gray-400 group-hover:text-brand-red"></i>
+        </button>
 
-            // Eixo 5: Gestão e Negócios
-            { id: 37, axis: 'G', category: 'Gestão e Negócios', text: 'Coordenar trabalhos em grupo, eventos ou atividades coletivas.' },
-            { id: 38, axis: 'G', category: 'Gestão e Negócios', text: 'Conduzir negociações, vendas de produtos ou apresentação persuasiva de ideias.' },
-            { id: 39, axis: 'G', category: 'Gestão e Negócios', text: 'Estabelecer metas organizadas de curto e longo prazo para projetos ou finanças.' },
-            { id: 40, axis: 'G', category: 'Gestão e Negócios', text: 'Desenvolver empreendimentos próprios ou gerenciar negócios.' },
-            { id: 41, axis: 'G', category: 'Gestão e Negócios', text: 'Compreender normas jurídicas, regulamentos institucionais e dinâmicas de mercado.' },
-            { id: 42, axis: 'G', category: 'Gestão e Negócios', text: 'Administrar equipes, delegando responsabilidades segundo as aptidões individuais.' },
-            { id: 43, axis: 'G', category: 'Gestão e Negócios', text: 'Tomar decisões estratégicas sob pressão em situações organizacionais complexas.' },
-            { id: 44, axis: 'G', category: 'Gestão e Negócios', text: 'Avaliar o desempenho financeiro e a eficiência de processos produtivos.' },
-            { id: 45, axis: 'G', category: 'Gestão e Negócios', text: 'Identificar oportunidades de crescimento e expansão em projetos ou empresas.' }
-        ];
+        <button onclick="handleAnswer(2)" class="w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-brand-yellow hover:bg-amber-50 transition duration-150 flex items-center justify-between group">
+          <span class="font-semibold text-gray-700 group-hover:text-brand-amber text-sm md:text-base">🤔 Combina UM POUCO / Talvez</span>
+          <i class="fa-solid fa-chevron-right text-gray-400 group-hover:text-brand-amber"></i>
+        </button>
 
-        // AXIS DETAILS
-        const axisDetails = {
-            'H': {
-                name: 'Humanas e Sociais',
-                description: 'Foco no entendimento das pessoas, da sociedade, do ensino e da cultura. Você busca transformar a vida comunitária e apoiar o desenvolvimento do próximo.',
-                careers: ['Psicologia', 'Pedagogia', 'Serviço Social', 'Direito', 'História', 'Sociologia', 'Letras', 'Políticas Públicas']
-            },
-            'T': {
-                name: 'Exatas e Tecnologia',
-                description: 'Foco na resolução de problemas lógicos, desenvolvimento de sistemas, engenharia e análise de dados. Você busca precisão e otimização técnica.',
-                careers: ['Análise de Sistemas', 'Ciência da Computação', 'Engenharias', 'Logística', 'Estatística', 'Sistemas de Informação']
-            },
-            'S': {
-                name: 'Biológicas e Saúde',
-                description: 'Foco na vida, saúde humana ou animal, cuidado físico e meio ambiente. Você tem motivação para cuidar, prevenir doenças e preservar ecossistemas.',
-                careers: ['Enfermagem', 'Fisioterapia', 'Biomedicina', 'Nutrição', 'Medicina Veterinária', 'Gestão Ambiental', 'Radiologia']
-            },
-            'C': {
-                name: 'Artes e Comunicação',
-                description: 'Foco na criatividade, mídias digitais, estética e narrativas. Você gosta de criar produtos visuais e comunicar ideias de forma marcante.',
-                careers: ['Design Gráfico', 'Jornalismo', 'Publicidade', 'Audiovisual', 'Arquitetura', 'Marketing Digital', 'Fotografia']
-            },
-            'G': {
-                name: 'Gestão e Negócios',
-                description: 'Foco na liderança, organização estratégica, finanças e mercado. Você gosta de coordenar projetos, gerenciar equipes e alcançar resultados.',
-                careers: ['Administração', 'Recursos Humanos', 'Ciências Contábeis', 'Comércio Exterior', 'Gestão Financeira', 'Empreendedorismo']
+        <button onclick="handleAnswer(1)" class="w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-gray-400 hover:bg-gray-50 transition duration-150 flex items-center justify-between group">
+          <span class="font-semibold text-gray-700 group-hover:text-gray-900 text-sm md:text-base">🙁 NÃO combina comigo / Não gosto</span>
+          <i class="fa-solid fa-chevron-right text-gray-400 group-hover:text-gray-600"></i>
+        </button>
+      </div>
+
+      <!-- CONTROLES -->
+      <div class="flex justify-between items-center pt-4 border-t border-gray-100 text-xs">
+        <button id="btn-prev" onclick="handlePrev()" class="text-gray-500 hover:text-brand-wine font-semibold flex items-center p-2 rounded hover:bg-gray-100 disabled:opacity-30 disabled:hover:bg-transparent">
+          <i class="fa-solid fa-arrow-left mr-1"></i> Pergunta Anterior
+        </button>
+        <span class="text-gray-400">Responda com sinceridade</span>
+      </div>
+    </section>
+
+    <!-- TELA DE RESULTADOS -->
+    <section id="screen-result" class="hidden space-y-6">
+      
+      <!-- CABEÇALHO DO RESULTADO -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-red-100 text-center">
+        <div class="inline-flex items-center justify-center p-3 bg-amber-100 rounded-full mb-3 text-brand-amber">
+          <i class="fa-solid fa-square-poll-vertical text-3xl"></i>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-brand-wine">Seu Mapeamento de Perfil</h2>
+        <p class="text-gray-600 text-sm mt-1">Veja abaixo a combinação de áreas que mais combinam com você!</p>
+
+        <!-- CARTÃO DO PERFIL COMBINADO -->
+        <div class="mt-6 p-5 bg-gradient-to-r from-red-50 to-amber-50 rounded-xl border border-red-200 text-left">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-red">Seu Perfil Combinado</span>
+          <h3 id="res-combined-title" class="text-xl md:text-2xl font-black text-brand-wine mt-1">
+            Humanas + Gestão
+          </h3>
+          <p id="res-combined-desc" class="text-sm text-gray-700 mt-2 leading-relaxed">
+            Descrição da combinação do perfil...
+          </p>
+        </div>
+      </div>
+
+      <!-- GRÁFICO DE DESEMPENHO -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 border border-red-100">
+        <h3 class="text-lg font-bold text-brand-wine mb-4 flex items-center">
+          <i class="fa-solid fa-chart-bar text-brand-amber mr-2"></i> Pontuação por Área
+        </h3>
+        <div class="relative w-full h-64">
+          <canvas id="chart-results"></canvas>
+        </div>
+      </div>
+
+      <!-- CARREIRAS SUGERIDAS -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 border border-red-100">
+        <h3 class="text-lg font-bold text-brand-wine mb-4 flex items-center">
+          <i class="fa-solid fa-briefcase text-brand-red mr-2"></i> Sugestões de Carreiras e Áreas
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="res-careers-container">
+          <!-- Injetado via JS -->
+        </div>
+      </div>
+
+      <!-- SEÇÃO UNINTA UMIRIM & FIES (DESTAQUE LARANJA) -->
+      <div class="bg-gradient-to-br from-orange-500 via-brand-orange to-amber-600 text-white rounded-2xl shadow-2xl p-6 md:p-8 border-2 border-brand-yellow relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 opacity-15 text-white pointer-events-none">
+          <i class="fa-solid fa-graduation-cap text-9xl"></i>
+        </div>
+
+        <div class="flex items-center space-x-2 mb-2">
+          <span class="bg-white text-brand-amber font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider shadow">
+            Oportunidade na Sua Região
+          </span>
+        </div>
+
+        <h3 class="text-2xl font-black text-white">Faculdade Uninta Umirim</h3>
+        <p class="text-orange-100 text-sm mt-1">Estude perto de casa com estrutura de excelência e apoio financeiro facilitado.</p>
+
+        <!-- NOVO CURSO EM FUNCIONAMENTO (MEDICINA VETERINÁRIA) -->
+        <div class="mt-6">
+          <span class="text-xs font-bold text-amber-200 uppercase tracking-wider block mb-2">
+            <i class="fa-solid fa-circle-check mr-1"></i> Curso Já em Funcionamento
+          </span>
+          <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="p-2 bg-white/20 rounded-lg text-white">
+                  <i class="fa-solid fa-paw text-lg"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-base">Medicina Veterinária</h4>
+                  <p class="text-xs text-orange-100">Graduação presencial com estrutura completa de laboratórios.</p>
+                </div>
+              </div>
+              <span class="text-xs bg-emerald-500 text-white font-bold px-2.5 py-1 rounded-full">Ativo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOVOS CURSOS CHEGANDO -->
+        <div class="mt-6">
+          <span class="text-xs font-bold text-amber-200 uppercase tracking-wider block mb-2">
+            <i class="fa-solid fa-rocket mr-1"></i> Novos Cursos em Breve
+          </span>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="bg-white/15 backdrop-blur-md p-3 rounded-xl border border-white/20 text-center">
+              <i class="fa-solid fa-brain text-xl text-brand-yellow mb-1"></i>
+              <div class="font-bold text-sm">Psicologia</div>
+            </div>
+            <div class="bg-white/15 backdrop-blur-md p-3 rounded-xl border border-white/20 text-center">
+              <i class="fa-solid fa-user-nurse text-xl text-brand-yellow mb-1"></i>
+              <div class="font-bold text-sm">Enfermagem</div>
+            </div>
+            <div class="bg-white/15 backdrop-blur-md p-3 rounded-xl border border-white/20 text-center">
+              <i class="fa-solid fa-scale-balanced text-xl text-brand-yellow mb-1"></i>
+              <div class="font-bold text-sm">Direito</div>
+            </div>
+            <div class="bg-white/15 backdrop-blur-md p-3 rounded-xl border border-white/20 text-center">
+              <i class="fa-solid fa-apple-whole text-xl text-brand-yellow mb-1"></i>
+              <div class="font-bold text-sm">Nutrição</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIES ATÉ 100% DESTAQUE -->
+        <div class="mt-6 bg-white text-gray-800 rounded-xl p-5 shadow-lg border-2 border-brand-yellow">
+          <div class="flex items-start">
+            <div class="p-3 bg-orange-100 rounded-lg text-brand-amber mr-3">
+              <i class="fa-solid fa-hand-holding-dollar text-2xl"></i>
+            </div>
+            <div>
+              <span class="bg-red-600 text-white font-black text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">
+                FINANCIAMENTO FACILITADO
+              </span>
+              <h4 class="font-extrabold text-brand-wine text-lg mt-0.5">FIES com até 100% de Cobertura!</h4>
+              <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+                A Uninta Umirim aceita o <strong>FIES (Fundo de Financiamento Estudantil)</strong>, que pode cobrir <strong>ATÉ 100% DA SUA MENSALIDADE</strong> durante todo o curso. Você estuda agora e só paga após se formar com juros facilitados!
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORMAS DE INGRESSO -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div class="bg-black/20 p-3 rounded-lg">
+            <strong class="text-brand-yellow block mb-1">1. Vestibular Agendado</strong>
+            Provas simplificadas e presenciais/online na sua velocidade.
+          </div>
+          <div class="bg-black/20 p-3 rounded-lg">
+            <strong class="text-brand-yellow block mb-1">2. Nota do ENEM</strong>
+            Use sua nota das edições anteriores para conseguir bolsas e descontos.
+          </div>
+          <div class="bg-black/20 p-3 rounded-lg">
+            <strong class="text-brand-yellow block mb-1">3. FIES & ProUni</strong>
+            Apoio governamental para estudantes de escola pública.
+          </div>
+        </div>
+
+        <!-- LINK OFICIAL -->
+        <div class="mt-6 text-center">
+          <a href="https://uninta.edu.br/site/umirim/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-brand-yellow hover:bg-yellow-400 text-brand-wine font-extrabold px-6 py-3 rounded-xl shadow-lg transition duration-200 text-sm">
+            <span>Acesse o Site da Uninta Umirim</span>
+            <i class="fa-solid fa-up-right-from-square ml-2"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- PLANO DE AÇÃO 7 DIAS -->
+      <div class="bg-white rounded-2xl shadow-xl p-6 border border-red-100">
+        <h3 class="text-lg font-bold text-brand-wine mb-4 flex items-center">
+          <i class="fa-solid fa-calendar-check text-brand-yellow mr-2"></i> Seu Plano de Ação para os Próximos 7 Dias
+        </h3>
+        <ol class="space-y-3 text-sm text-gray-700">
+          <li class="flex items-start">
+            <span class="bg-red-100 text-brand-wine font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 text-xs shrink-0 mt-0.5">1</span>
+            <span>Pesquise 2 profissões da sua área principal e assista a vídeos do tipo <em>"Um dia na vida de um [Profissão]"</em> no YouTube.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="bg-red-100 text-brand-wine font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 text-xs shrink-0 mt-0.5">2</span>
+            <span>Verifique as datas de inscrição do <strong>ENEM, Sisu, ProUni e FIES</strong> para não perder os prazos.</span>
+          </li>
+          <li class="flex items-start">
+            <span class="bg-red-100 text-brand-wine font-bold rounded-full w-6 h-6 flex items-center justify-center mr-3 text-xs shrink-0 mt-0.5">3</span>
+            <span>Acesse o site da <strong>Uninta Umirim</strong> para conhecer as opções de cursos e formas de ingresso da sua região.</span>
+          </li>
+        </ol>
+      </div>
+
+      <!-- AÇÕES FINAIS E BOTOES -->
+      <div class="flex flex-col sm:flex-row gap-3 pt-4">
+        <button id="btn-restart" class="flex-1 bg-brand-wine hover:bg-brand-darkred text-white font-bold py-3.5 px-6 rounded-xl shadow transition duration-200 flex items-center justify-center text-sm">
+          <i class="fa-solid fa-rotate-right mr-2"></i>
+          <span>Refazer o Teste</span>
+        </button>
+
+        <button id="btn-print" class="flex-1 bg-gray-800 hover:bg-gray-900 text-white font-bold py-3.5 px-6 rounded-xl shadow transition duration-200 flex items-center justify-center text-sm">
+          <i class="fa-solid fa-print mr-2"></i>
+          <span>Salvar ou Imprimir Resultado</span>
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- JAVASCRIPT LÓGICA COMPLETA -->
+  <script>
+    // PERGUNTAS DO QUESTIONÁRIO (45 QUESTÕES)
+    const questions = [
+      // Eixo 1: Humanas e Sociais (H)
+      { id: 1, axis: 'H', text: "Escutar amigos quando estão passando por momentos difíceis e colaborar na busca por soluções." },
+      { id: 2, axis: 'H', text: "Entender o funcionamento da sociedade estudando História, Filosofia, Sociologia ou atualidades." },
+      { id: 3, axis: 'H', text: "Defender os direitos humanos e combater situações de injustiça social." },
+      { id: 4, axis: 'H', text: "Ensinar, explicar conceitos ou orientar pessoas no processo de aprendizagem." },
+      { id: 5, axis: 'H', text: "Pesquisar sobre comportamento humano, sentimentos e relações interpessoais." },
+      { id: 6, axis: 'H', text: "Participar de trabalhos voluntários, ONGs ou ações de impacto comunitário." },
+      { id: 7, axis: 'H', text: "Lidar com atendimento ao público de forma direta, contínua e empática." },
+      { id: 8, axis: 'H', text: "Compreender o impacto das escolhas políticas e econômicas na vida da população." },
+      { id: 9, axis: 'H', text: "Mediar conflitos e buscar acordos pacíficos entre partes divergentes." },
+
+      // Eixo 2: Exatas e Tecnologia (T)
+      { id: 10, axis: 'T', text: "Resolver desafios que exigem raciocínio lógico, enigmas ou jogos de estratégia." },
+      { id: 11, axis: 'T', text: "Trabalhar com Matemática, Física ou aplicação de fórmulas e contas." },
+      { id: 12, axis: 'T', text: "Entender o funcionamento interno de computadores, softwares, redes ou aplicativos." },
+      { id: 13, axis: 'T', text: "Organizar dados e informações em planilhas, tabelas e gráficos estatísticos." },
+      { id: 14, axis: 'T', text: "Compreender o funcionamento de engrenagens, circuitos elétricos, máquinas ou construções." },
+      { id: 15, axis: 'T', text: "Aprender linguagens de programação ou buscar a automação de tarefas." },
+      { id: 16, axis: 'T', text: "Analisar orçamentos, dados financeiros e investimentos." },
+      { id: 17, axis: 'T', text: "Identificar falhas em processos ou sistemas técnicos e propor soluções estruturadas." },
+      { id: 18, axis: 'T', text: "Realizar cálculos precisos para projetos, medições ou estimativas técnicas." },
+
+      // Eixo 3: Biológicas e Saúde (S)
+      { id: 19, axis: 'S', text: "Estudar o corpo humano, o funcionamento dos órgãos, a prevenção e o tratamento de doenças." },
+      { id: 20, axis: 'S', text: "Prestar assistência direta ao bem-estar físico e à saúde de pessoas fragilizadas." },
+      { id: 21, axis: 'S', text: "Realizar atividades ao ar livre, em contato direto com a natureza, solos ou ecossistemas." },
+      { id: 22, axis: 'S', text: "Cuidar do bem-estar, saúde e comportamento dos animais." },
+      { id: 23, axis: 'S', text: "Ter interesse por Biologia, Genética, Química orgânica ou ecologia." },
+      { id: 24, axis: 'S', text: "Conduzir procedimentos práticos ou exames em laboratórios usando equipamentos específicos." },
+      { id: 25, axis: 'S', text: "Atuar em causas voltadas à sustentabilidade, reciclagem e preservação ambiental." },
+      { id: 26, axis: 'S', text: "Compreender os efeitos dos alimentos e do estilo de vida no organismo." },
+      { id: 27, axis: 'S', text: "Investigar epidemias, pragas ou fatores ambientais que afetam a saúde coletiva." },
+
+      // Eixo 4: Artes e Comunicação (C)
+      { id: 28, axis: 'C', text: "Produzir ilustrações, pinturas ou criações visuais no papel ou em meios digitais." },
+      { id: 29, axis: 'C', text: "Escrever textos, redações, histórias, poesias ou roteiros." },
+      { id: 30, axis: 'C', text: "Gravar e editar vídeos, fotos ou conteúdos direcionados a mídias digitais." },
+      { id: 31, axis: 'C', text: "Expressar ideias por meio de música, teatro, dança ou outras linguagens artísticas." },
+      { id: 32, axis: 'C', text: "Elaborar projetos de arquitetura, decoração de interiores ou design de produtos." },
+      { id: 33, axis: 'C', text: "Desenvolver campanhas publicitárias, identidade visual de marcas ou estratégias de divulgação." },
+      { id: 34, axis: 'C', text: "Acompanhar notícias, conduzir entrevistas ou apurar fatos para informar o público." },
+      { id: 35, axis: 'C', text: "Criar arranjos estéticos e funcionais para eventos, ambientes ou mídias impressas." },
+      { id: 36, axis: 'C', text: "Usar a imaginação para transformar conceitos abstratos em produtos visuais ou narrativos." },
+
+      // Eixo 5: Gestão e Negócios (G)
+      { id: 37, axis: 'G', text: "Coordenar trabalhos em grupo, eventos ou atividades coletivas." },
+      { id: 38, axis: 'G', text: "Conduzir negociações, vendas de produtos ou apresentação persuasiva de ideias." },
+      { id: 39, axis: 'G', text: "Estabelecer metas organizadas de curto e longo prazo para projetos ou finanças." },
+      { id: 40, axis: 'G', text: "Desenvolver empreendimentos próprios ou gerenciar negócios." },
+      { id: 41, axis: 'G', text: "Compreender normas jurídicas, regulamentos institucionais e dinâmicas de mercado." },
+      { id: 42, axis: 'G', text: "Administrar equipes, delegando responsabilidades segundo as aptidões individuais." },
+      { id: 43, axis: 'G', text: "Tomar decisões estratégicas sob pressão em situações organizacionais complexas." },
+      { id: 44, axis: 'G', text: "Avaliar o desempenho financeiro e a eficiência de processos produtivos." },
+      { id: 45, axis: 'G', text: "Identificar oportunidades de crescimento e expansão em projetos ou empresas." }
+    ];
+
+    const axisNames = {
+      'H': 'Humanas e Sociais',
+      'T': 'Exatas e Tecnologia',
+      'S': 'Biológicas e Saúde',
+      'C': 'Artes e Comunicação',
+      'G': 'Gestão e Negócios'
+    };
+
+    const careerMap = {
+      'H': 'Psicologia, Serviço Social, Pedagogia, Direito, História, Sociologia, Filosofia, Relações Internacionais.',
+      'T': 'Análise e Desenvolvimento de Sistemas, Ciência da Computação, Engenharias, Logística, Estatística, Banco de Dados.',
+      'S': 'Enfermagem, Medicina Veterinária, Fisioterapia, Biomedicina, Nutrição, Gestão Ambiental, Biologia, Farmácia.',
+      'C': 'Design Gráfico, Jornalismo, Publicidade e Propaganda, Cinema/Audiovisual, Arquitetura, Marketing Digital.',
+      'G': 'Administração, Ciências Contábeis, Gestão de Recursos Humanos, Comércio Exterior, Gestão Financeira, Empreendedorismo.'
+    };
+
+    // ESTADO DA APLICAÇÃO
+    let currentQuestionIndex = 0;
+    let answers = new Array(questions.length).fill(null);
+    let chartInstance = null;
+
+    // ELEMENTOS DO DOM
+    const screenStart = document.getElementById('screen-start');
+    const screenQuiz = document.getElementById('screen-quiz');
+    const screenResult = document.getElementById('screen-result');
+
+    const btnStart = document.getElementById('btn-start');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnRestart = document.getElementById('btn-restart');
+    const btnPrint = document.getElementById('btn-print');
+
+    const quizProgressText = document.getElementById('quiz-progress-text');
+    const quizProgressPercent = document.getElementById('quiz-progress-percent');
+    const quizProgressBar = document.getElementById('quiz-progress-bar');
+
+    const questionAxisBadge = document.getElementById('question-axis-badge');
+    const questionText = document.getElementById('question-text');
+
+    // EVENT LISTENERS
+    btnStart.addEventListener('click', startQuiz);
+    btnRestart.addEventListener('click', restartQuiz);
+    btnPrint.addEventListener('click', () => window.print());
+
+    function startQuiz() {
+      currentQuestionIndex = 0;
+      answers.fill(null);
+      screenStart.classList.add('hidden');
+      screenResult.classList.add('hidden');
+      screenQuiz.classList.remove('hidden');
+      updateQuestionCard();
+    }
+
+    function restartQuiz() {
+      currentQuestionIndex = 0;
+      answers.fill(null);
+      if (chartInstance) chartInstance.destroy();
+      screenResult.classList.add('hidden');
+      screenQuiz.classList.add('hidden');
+      screenStart.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateQuestionCard() {
+      const q = questions[currentQuestionIndex];
+      const total = questions.length;
+      const pct = Math.round((currentQuestionIndex / total) * 100);
+
+      quizProgressText.innerText = `Pergunta ${currentQuestionIndex + 1} de ${total}`;
+      quizProgressPercent.innerText = `${pct}%`;
+      quizProgressBar.style.width = `${pct}%`;
+
+      questionAxisBadge.innerText = axisNames[q.axis];
+      questionText.innerText = `${q.id}. ${q.text}`;
+
+      btnPrev.disabled = currentQuestionIndex === 0;
+    }
+
+    function handleAnswer(val) {
+      answers[currentQuestionIndex] = val;
+      if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        updateQuestionCard();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function handlePrev() {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        updateQuestionCard();
+      }
+    }
+
+    function finishQuiz() {
+      // Calcular pontuação por eixo
+      const scores = { 'H': 0, 'T': 0, 'S': 0, 'C': 0, 'G': 0 };
+      questions.forEach((q, idx) => {
+        const val = answers[idx] || 1;
+        scores[q.axis] += val;
+      });
+
+      // Ordenar eixos
+      const sorted = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+      const top1 = sorted[0];
+      const top2 = sorted[1];
+
+      // Atualizar tela de resultados
+      document.getElementById('res-combined-title').innerText = `${axisNames[top1]} + ${axisNames[top2]}`;
+      document.getElementById('res-combined-desc').innerText = 
+        `Seu perfil indicou maior afinidade com ${axisNames[top1]} (área principal) e ${axisNames[top2]} (área secundária). Essa intersecção mostra que você pode se destacar em carreiras que combinem tanto aspectos de ${axisNames[top1].toLowerCase()} quanto de ${axisNames[top2].toLowerCase()}.`;
+
+      // Atualizar sugestões de carreiras
+      const careersContainer = document.getElementById('res-careers-container');
+      careersContainer.innerHTML = `
+        <div class="p-4 bg-red-50 rounded-xl border border-red-200">
+          <h4 class="font-bold text-brand-wine text-sm flex items-center mb-1">
+            <i class="fa-solid fa-star text-brand-yellow mr-1.5"></i> Principal: ${axisNames[top1]}
+          </h4>
+          <p class="text-xs text-gray-700 leading-relaxed">${careerMap[top1]}</p>
+        </div>
+        <div class="p-4 bg-amber-50 rounded-xl border border-amber-200">
+          <h4 class="font-bold text-brand-amber text-sm flex items-center mb-1">
+            <i class="fa-solid fa-star-half-stroke text-brand-yellow mr-1.5"></i> Secundária: ${axisNames[top2]}
+          </h4>
+          <p class="text-xs text-gray-700 leading-relaxed">${careerMap[top2]}</p>
+        </div>
+      `;
+
+      // Renderizar gráfico
+      screenQuiz.classList.add('hidden');
+      screenResult.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      renderChart(scores);
+    }
+
+    function renderChart(scores) {
+      const ctx = document.getElementById('chart-results').getContext('2d');
+      if (chartInstance) chartInstance.destroy();
+
+      chartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Humanas', 'Exatas/TI', 'Saúde', 'Artes/Com.', 'Gestão'],
+          datasets: [{
+            label: 'Pontuação',
+            data: [scores['H'], scores['T'], scores['S'], scores['C'], scores['G']],
+            backgroundColor: ['#800020', '#C0392B', '#D35400', '#F1C40F', '#900C3F'],
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 27,
+              ticks: { stepSize: 5 }
             }
-        };
-
-        // COMBINED INTERSECTIONS MAP
-        const intersections = {
-            'H-G': 'Gestão de Pessoas (RH), Psicologia Organizacional, Administração Escolar ou Direito Trabalhista.',
-            'G-H': 'Gestão de Pessoas (RH), Psicologia Organizacional, Administração Escolar ou Direito Trabalhista.',
-            'T-S': 'Informática Biomédica, Engenharia Clínica, Análise de Dados na Saúde ou Biotecnologia.',
-            'S-T': 'Informática Biomédica, Engenharia Clínica, Análise de Dados na Saúde ou Biotecnologia.',
-            'C-T': 'Design de Interfaces (UI/UX), Animação Digital, Design de Games ou Desenvolvimento Web.',
-            'T-C': 'Design de Interfaces (UI/UX), Animação Digital, Design de Games ou Desenvolvimento Web.',
-            'S-H': 'Psicologia Hospitalar, Saúde Coletiva, Terapia Ocupacional ou Enfermagem Comunitária.',
-            'H-S': 'Psicologia Hospitalar, Saúde Coletiva, Terapia Ocupacional ou Enfermagem Comunitária.',
-            'G-C': 'Marketing Estratégico, Gestão de Marcas (Branding), Publicidade e Relações Públicas.',
-            'C-G': 'Marketing Estratégico, Gestão de Marcas (Branding), Publicidade e Relações Públicas.'
-        };
-
-        // STATE VARIABLES
-        let currentQuestionIndex = 0;
-        let answers = new Array(questionsData.length).fill(null);
-        let studentName = '';
-        let myChart = null;
-
-        // BIND EVENT LISTENERS ON LOAD
-        window.addEventListener('DOMContentLoaded', () => {
-            // Start Button
-            document.getElementById('btn-start-test').addEventListener('click', startTest);
-
-            // Option Buttons
-            document.getElementById('btn-opt-1').addEventListener('click', () => selectOption(1));
-            document.getElementById('btn-opt-2').addEventListener('click', () => selectOption(2));
-            document.getElementById('btn-opt-3').addEventListener('click', () => selectOption(3));
-
-            // Quiz Previous Question
-            document.getElementById('btn-prev-question').addEventListener('click', prevQuestion);
-
-            // Reset & Retake Buttons
-            document.getElementById('btn-header-reset').addEventListener('click', confirmReset);
-            document.getElementById('btn-retake-quiz').addEventListener('click', resetAndGoHome);
-            document.getElementById('btn-logo-home').addEventListener('click', resetAndGoHome);
-
-            // Print Button
-            document.getElementById('btn-print-results').addEventListener('click', () => window.print());
-        });
-
-        function startTest() {
-            const inputName = document.getElementById('student-name').value.trim();
-            studentName = inputName !== '' ? inputName : 'Estudante';
-
-            document.getElementById('screen-welcome').classList.add('hidden');
-            document.getElementById('screen-quiz').classList.remove('hidden');
-            document.getElementById('header-actions').classList.remove('hidden');
-
-            currentQuestionIndex = 0;
-            renderQuestion();
+          }
         }
-
-        function renderQuestion() {
-            const q = questionsData[currentQuestionIndex];
-            
-            // Category badge & counter
-            document.getElementById('quiz-category-badge').innerText = `Eixo: ${q.category}`;
-            document.getElementById('quiz-progress-text').innerText = `Pergunta ${currentQuestionIndex + 1} de ${questionsData.length}`;
-            document.getElementById('question-indicator').innerText = `${currentQuestionIndex + 1} / ${questionsData.length}`;
-            document.getElementById('question-text').innerText = `${q.id}. ${q.text}`;
-
-            // Progress Bar
-            const pct = Math.round(((currentQuestionIndex + 1) / questionsData.length) * 100);
-            document.getElementById('quiz-progress-bar').style.width = `${pct}%`;
-
-            // Disable/enable Prev button
-            document.getElementById('btn-prev-question').disabled = currentQuestionIndex === 0;
-
-            // Highlight saved option if present
-            const savedValue = answers[currentQuestionIndex];
-            const optButtons = [
-                document.getElementById('btn-opt-1'),
-                document.getElementById('btn-opt-2'),
-                document.getElementById('btn-opt-3')
-            ];
-
-            optButtons.forEach((btn, idx) => {
-                if (savedValue === (idx + 1)) {
-                    btn.classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50/40');
-                } else {
-                    btn.classList.remove('ring-2', 'ring-indigo-500', 'bg-indigo-50/40');
-                }
-            });
-        }
-
-        function selectOption(value) {
-            answers[currentQuestionIndex] = value;
-
-            if (currentQuestionIndex < questionsData.length - 1) {
-                currentQuestionIndex++;
-                renderQuestion();
-            } else {
-                calculateResults();
-            }
-        }
-
-        function prevQuestion() {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                renderQuestion();
-            }
-        }
-
-        function calculateResults() {
-            const scores = { 'H': 0, 'T': 0, 'S': 0, 'C': 0, 'G': 0 };
-
-            questionsData.forEach((q, idx) => {
-                const val = answers[idx] || 1;
-                scores[q.axis] += val;
-            });
-
-            const sortedAxes = Object.keys(scores).map(key => ({
-                axis: key,
-                score: scores[key],
-                ...axisDetails[key]
-            })).sort((a, b) => b.score - a.score);
-
-            const primary = sortedAxes[0];
-            const secondary = sortedAxes[1];
-
-            // Celebration effect
-            try {
-                confetti({
-                    particleCount: 80,
-                    spread: 70,
-                    origin: { y: 0.6 }
-                });
-            } catch (e) {
-                // Ignore if library fails
-            }
-
-            // Populate Student Name
-            document.getElementById('res-student-name').innerText = studentName;
-
-            // Primary Card
-            document.getElementById('res-title-1').innerText = primary.name;
-            document.getElementById('res-score-1').innerText = `${primary.score} pts`;
-            document.getElementById('res-desc-1').innerText = primary.description;
-            renderCareers('res-careers-1', primary.careers);
-
-            // Secondary Card
-            document.getElementById('res-title-2').innerText = secondary.name;
-            document.getElementById('res-score-2').innerText = `${secondary.score} pts`;
-            document.getElementById('res-desc-2').innerText = secondary.description;
-            renderCareers('res-careers-2', secondary.careers);
-
-            // Combined Profile Synthesis
-            const comboKey = `${primary.axis}-${secondary.axis}`;
-            const customCombo = intersections[comboKey];
-            if (customCombo) {
-                document.getElementById('res-synthesis').innerHTML = 
-                    `Sua combinação principal é <strong>${primary.name} + ${secondary.name}</strong>. Carreiras que integram essa visão: <em>${customCombo}</em>`;
-            } else {
-                document.getElementById('res-synthesis').innerHTML = 
-                    `Sua combinação une <strong>${primary.name}</strong> e <strong>${secondary.name}</strong>, permitindo atuar tanto em áreas focadas em pessoas e criatividade quanto na execução prática.`;
-            }
-
-            // Switch Screen
-            document.getElementById('screen-quiz').classList.add('hidden');
-            document.getElementById('screen-results').classList.remove('hidden');
-
-            // Render Chart
-            renderChart(scores);
-        }
-
-        function renderCareers(containerId, careersList) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = '';
-            careersList.forEach(career => {
-                const tag = document.createElement('span');
-                tag.className = 'px-2.5 py-1 bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold rounded-lg';
-                tag.innerText = career;
-                container.appendChild(tag);
-            });
-        }
-
-        function renderChart(scores) {
-            const ctx = document.getElementById('resultsChart').getContext('2d');
-
-            if (myChart) {
-                myChart.destroy();
-            }
-
-            myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Humanas/Sociais', 'Exatas/Tecnologia', 'Biológicas/Saúde', 'Artes/Comunicação', 'Gestão/Negócios'],
-                    datasets: [{
-                        label: 'Pontuação (Máx: 27)',
-                        data: [scores['H'], scores['T'], scores['S'], scores['C'], scores['G']],
-                        backgroundColor: [
-                            'rgba(99, 102, 241, 0.85)',
-                            'rgba(59, 130, 246, 0.85)',
-                            'rgba(16, 185, 129, 0.85)',
-                            'rgba(168, 85, 247, 0.85)',
-                            'rgba(245, 158, 11, 0.85)'
-                        ],
-                        borderRadius: 12,
-                        borderSkipped: false,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return ` Pontuação: ${context.raw} de 27`;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 27,
-                            grid: { color: 'rgba(226, 232, 240, 0.6)' },
-                            ticks: { font: { family: 'Inter', size: 11 } }
-                        },
-                        x: {
-                            grid: { display: false },
-                            ticks: { font: { family: 'Inter', size: 11, weight: '600' } }
-                        }
-                    }
-                }
-            });
-        }
-
-        function confirmReset() {
-            if (confirm("Deseja realmente reiniciar o teste e apagar suas respostas?")) {
-                resetAndGoHome();
-            }
-        }
-
-        function resetAndGoHome() {
-            answers = new Array(questionsData.length).fill(null);
-            currentQuestionIndex = 0;
-            
-            document.getElementById('screen-results').classList.add('hidden');
-            document.getElementById('screen-quiz').classList.add('hidden');
-            document.getElementById('screen-welcome').classList.remove('hidden');
-            document.getElementById('header-actions').classList.add('hidden');
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
+      });
+    }
+  </script>
 </body>
 </html>
